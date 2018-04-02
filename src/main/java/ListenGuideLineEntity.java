@@ -1,0 +1,72 @@
+import java.sql.Timestamp;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "listenguideline")
+public class ListenGuideLineEntity {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer listenGuidelineId;
+
+  @Column(name = "title")
+  private String title;
+
+  @Column(name = "image")
+  private String image;
+
+  @Column(name = "content")
+  private String content;
+
+  @Column(name = "createddate")
+  private Timestamp createdDate;
+
+  @Column(name = "modifieddate")
+  private Timestamp modifiedDate;
+
+  @OneToMany(mappedBy = "listenGuidelineEntity", fetch = FetchType.LAZY)
+  private List<CommentEntity> commentEntityList;
+
+  public Integer getListenGuidelineId() {
+    return listenGuidelineId;
+  }
+
+  public void setListenGuidelineId(Integer listenGuidelineId) {
+    this.listenGuidelineId = listenGuidelineId;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
+
+  public Timestamp getCreatedDate() {
+    return createdDate;
+  }
+}
